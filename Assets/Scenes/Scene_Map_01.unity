@@ -483,7 +483,7 @@ MonoBehaviour:
   unitSelectionArea: {fileID: 1300097740}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
 --- !u!4 &733592666
 Transform:
   m_ObjectHideFlags: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   unitSelectionHandler: {fileID: 733592665}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1281
 --- !u!1 &777674231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 2019831750}
   - component: {fileID: 2019831749}
   - component: {fileID: 2019831748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

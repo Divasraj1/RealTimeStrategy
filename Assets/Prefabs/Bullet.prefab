@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8692545477129336696}
   - component: {fileID: 8669529666041969571}
   - component: {fileID: 5264519021038860457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,6 +134,7 @@ MonoBehaviour:
   rb: {fileID: 5264519021038860457}
   destroyAfterSeconds: 3
   LaunchForce: 10
+  damageToDeal: 20
 --- !u!54 &5264519021038860457
 Rigidbody:
   m_ObjectHideFlags: 0
