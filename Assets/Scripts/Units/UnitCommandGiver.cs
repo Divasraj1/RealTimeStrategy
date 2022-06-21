@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,18 @@ public class UnitCommandGiver : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-
+        GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
     }
+    private void OnDestroy()
+    {
+        GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
+    }
+
+    private void ClientHandleGameOver(string winnerName)
+    {
+        enabled = false;
+    }
+
     void Update()
     {
         if (!Mouse.current.rightButton.wasPressedThisFrame) { return; }

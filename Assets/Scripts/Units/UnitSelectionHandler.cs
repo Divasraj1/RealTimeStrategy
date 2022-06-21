@@ -12,16 +12,25 @@ public class UnitSelectionHandler : MonoBehaviour
     private Vector2 startPosition;
     private Camera mainCamera;
     private RTSPlayer player = null;
-    public List<Unit> SelectedUnits { get; } = new List<Unit>(); 
+    public List<Unit> SelectedUnits { get; } = new List<Unit>();
+    
     private void Start()
     {
         mainCamera = Camera.main;
         player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
+        GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
     }
+
+    private void ClientHandleGameOver(string winnerName)
+    {
+        enabled = false;
+    }
+
     private void OnDestroy()
     {
         Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
+        GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
     }
     private void Update()
     {

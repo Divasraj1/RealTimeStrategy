@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using UnityEngine.AI;
+using System;
 
 public class UnitMovement : NetworkBehaviour
 {
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private Targeter targeter = null;
     [SerializeField] private float chaseRange = 10f;
+
+    public override void OnStartServer()
+    {
+        GameOverHandler.ServerOnGameOver += ServerHandleGameOver;
+    }
+
+    private void ServerHandleGameOver()
+    {
+        agent.ResetPath();
+    }
+
+    public override void OnStopServer()
+    {
+        GameOverHandler.ServerOnGameOver -= ServerHandleGameOver;
+    }
 
     [ServerCallback]
     private void Update()
