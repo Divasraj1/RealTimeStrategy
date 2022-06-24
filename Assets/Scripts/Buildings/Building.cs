@@ -6,6 +6,8 @@ using System;
 
 public class Building : NetworkBehaviour
 {
+    [SerializeField] private GameObject buildingPreview = null; 
+
     [SerializeField] private Sprite icon = null;
     [SerializeField] private int id = -1;
     [SerializeField] private int price = 100;
@@ -16,6 +18,10 @@ public class Building : NetworkBehaviour
     public static event Action<Building> AuthorityOnBuildingSpawned;
     public static event Action<Building> AuthorityOnBuildingDespawned;
 
+    public GameObject GetBuildingPreview()
+    {
+        return buildingPreview;
+    }
     public Sprite GetIcon()
     {
         return icon;
