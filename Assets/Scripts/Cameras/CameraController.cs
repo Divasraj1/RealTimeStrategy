@@ -34,10 +34,10 @@ public class CameraController : NetworkBehaviour
 
     private void UpdateCameraPosition()
     {
-        Vector3 pos = playerCameraTransform.position;
+        Vector3 pos = Camera.main.transform.position;//playerCameraTransform.position;
         if(previousInput == Vector2.zero)
         {
-            Vector3 cursorMovement = Vector3.zero;
+            /*Vector3 cursorMovement = Vector3.zero;
             Vector2 cursorPosition = Mouse.current.position.ReadValue();
             if(cursorPosition.y >= Screen.height - screenBorderThickness)
             {
@@ -55,7 +55,7 @@ public class CameraController : NetworkBehaviour
             {
                 cursorMovement.x -= 1;
             }
-            pos += cursorMovement.normalized * speed * Time.deltaTime;
+            pos += cursorMovement.normalized * speed * Time.deltaTime;*/
         }
         else
         {

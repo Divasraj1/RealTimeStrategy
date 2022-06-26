@@ -64,7 +64,6 @@ public class BuildingButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandle
             player.CmdTryPlaceBuilding(building.GetId(),hit.point);
         }
         buildingPreviewInstance.SetActive(false);
-        Destroy(buildingPreviewInstance);
     }
     public void UpdateBuildingPreview()
     {
