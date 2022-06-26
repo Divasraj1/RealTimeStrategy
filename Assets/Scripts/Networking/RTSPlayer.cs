@@ -11,10 +11,16 @@ public class RTSPlayer : NetworkBehaviour
     [SerializeField] private float buildingRangeLimit = 5f;
     private List<Unit> myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
+    private Color teamColor = new Color();
     [SyncVar(hook = nameof(ClientHandleResourceUpdated))]
     private int resources = 500;
 
     public event Action<int> ClientOnResourcesUpdated;
+
+    public Color GetTeamColor()
+    {
+        return teamColor;
+    }
     public List<Unit> GetMyUnits()
     {
         return myUnits;
@@ -42,11 +48,7 @@ public class RTSPlayer : NetworkBehaviour
         }
         return false;
     }
-    [Server]
-    public void SetResources(int newResources)
-    {
-        resources = newResources;
-    }
+    
 
     #region server
     public override void OnStartServer()
@@ -107,6 +109,17 @@ public class RTSPlayer : NetworkBehaviour
     {
         if (building.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
         myBuildings.Remove(building);
+    }
+
+    [Server]
+    public void SetTeamColor(Color newcolor)
+    {
+        teamColor = newcolor;
+    }
+    [Server]
+    public void SetResources(int newResources)
+    {
+        resources = newResources;
     }
     #endregion
 
