@@ -6,7 +6,9 @@ using System;
 
 public class RTSPlayer : NetworkBehaviour
 {
+    [SerializeField] private LayerMask buildingBlockLayer = new LayerMask();
     [SerializeField] private Building[] buildings = new Building[0];
+    [SerializeField] private float buildingRangeLimit = 5f;
     private List<Unit> myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
     [SyncVar(hook = nameof(ClientHandleResourceUpdated))]
@@ -24,6 +26,21 @@ public class RTSPlayer : NetworkBehaviour
     public int GetResources()
     {
         return resources;
+    }
+    public bool CanPlaceBuilding(BoxCollider buildingCollider,Vector3 point)
+    {
+        if (Physics.CheckBox(point + buildingCollider.center, buildingCollider.size / 2, Quaternion.identity, buildingBlockLayer))
+        {
+            return false;
+        }
+        foreach (Building building in myBuildings)
+        {
+            if ((point - building.transform.position).sqrMagnitude <= buildingRangeLimit * buildingRangeLimit)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     [Server]
     public void SetResources(int newResources)
@@ -61,9 +78,14 @@ public class RTSPlayer : NetworkBehaviour
             }
         }
         if(buildingToPlace == null) { return; }
+        if(resources < buildingToPlace.GetPrice()) { return; }
+        BoxCollider buildingCollider = buildingToPlace.GetComponent<BoxCollider>();
+
+        if (!CanPlaceBuilding(buildingCollider,point)) { return; }
         GameObject buildingInstance = Instantiate(buildingToPlace.gameObject, point, buildingToPlace.transform.rotation);
 
         NetworkServer.Spawn(buildingInstance, connectionToClient);
+        SetResources(resources - buildingToPlace.GetPrice());
     }
 
     private void ServerHandleUnitSpawned(Unit unit)
