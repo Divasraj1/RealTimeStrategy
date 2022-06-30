@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3591893401871622749}
   - component: {fileID: 3591893401871622748}
   - component: {fileID: 3591893401871622739}
-  - component: {fileID: 3591893401871622751}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -60,12 +59,15 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 2218624006053453232, guid: 0b187f7fd7d64c848947887ba8c3de66, type: 3}
   - {fileID: 5599199949981549926, guid: b3f517f3c29b68b478713482dfc8b732, type: 3}
-  - {fileID: 8692545477129336699, guid: c812ec254a331cc4fb4d9f66362b0372, type: 3}
   - {fileID: 6729898161355654915, guid: 7c69916feabd92547a46293ad8dc3c65, type: 3}
-  - {fileID: 5599199949981549926, guid: 0c35a7243f2244d4cbd6d08ebab23cec, type: 3}
   - {fileID: 5599199949981549926, guid: 4c6f7028cf9d38c4d8c559d5cc5e2ba7, type: 3}
+  - {fileID: 6255237805986814109, guid: f83c8d7a4d59a1e49bb455ad2535112a, type: 3}
+  - {fileID: 774741808684108792, guid: 9a243f4262e846f43950d45f94ba0c1c, type: 3}
+  - {fileID: 2445909131579114616, guid: b26ac9b2164be3e46a5e7781c476e6ea, type: 3}
+  - {fileID: 5089663507254538461, guid: 0abfe06127ed1f54cbcf02b8df6d6ed9, type: 3}
+  - {fileID: 6118613155540419185, guid: 6c7e352a29dbb704ebd69a6997d15919, type: 3}
+  - {fileID: 7100792263055110961, guid: d4b86500a02a76345bc3b902c03dc6ae, type: 3}
   unitSpawnerPrefab: {fileID: 5599199949981549926, guid: b3f517f3c29b68b478713482dfc8b732, type: 3}
   gameOverHandlerPrefab: {fileID: 6729898161355654912, guid: 7c69916feabd92547a46293ad8dc3c65, type: 3}
 --- !u!114 &3591893401871622739
@@ -92,17 +94,3 @@ MonoBehaviour:
   clientMaxReceivesPerTick: 1000
   clientSendQueueLimit: 10000
   clientReceiveQueueLimit: 10000
---- !u!114 &3591893401871622751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591893401871622737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
