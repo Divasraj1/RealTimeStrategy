@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59155564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.7, y: 0, z: -41.6}
+  m_LocalPosition: {x: -33.7, y: 0.5, z: -41.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -873,10 +873,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3275436108678660268, guid: 9b961f350804ea4498c72a74a04cbd97, type: 3}
+    - target: {fileID: 1827808394487373831, guid: 9b961f350804ea4498c72a74a04cbd97, type: 3}
       propertyPath: building
       value: 
-      objectReference: {fileID: 2876795103645544006, guid: 0c35a7243f2244d4cbd6d08ebab23cec, type: 3}
+      objectReference: {fileID: 4517560576128182609, guid: 6c7e352a29dbb704ebd69a6997d15919, type: 3}
     - target: {fileID: 3654489965197156642, guid: 9b961f350804ea4498c72a74a04cbd97, type: 3}
       propertyPath: m_Name
       value: BuildingDisplay
@@ -1318,7 +1318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556111705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.3, y: 0, z: -40}
+  m_LocalPosition: {x: 48.3, y: 0.5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1932,7 +1932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911198065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.5, y: 0, z: 42}
+  m_LocalPosition: {x: -33.5, y: 0.5, z: 42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2770,7 +2770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676602538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.1, y: 0, z: 42.4}
+  m_LocalPosition: {x: 50.1, y: 0.5, z: 42.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
