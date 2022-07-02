@@ -3670,6 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobbyUI: {fileID: 132250402}
+  startGameButton: {fileID: 2015658527}
 --- !u!1 &1999493423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,10 +3761,6 @@ PrefabInstance:
     - target: {fileID: 3591893401871622737, guid: 5f6bc6b990236ec4bad631a0afdc0bc9, type: 3}
       propertyPath: m_Name
       value: Network Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591893401871622748, guid: 5f6bc6b990236ec4bad631a0afdc0bc9, type: 3}
-      propertyPath: onlineScene
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3591893401871622749, guid: 5f6bc6b990236ec4bad631a0afdc0bc9, type: 3}
       propertyPath: m_RootOrder
@@ -3894,7 +3891,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2015658528}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1993047074}
+        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2015658528
 MonoBehaviour:
   m_ObjectHideFlags: 0

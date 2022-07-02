@@ -15,10 +15,14 @@ public class RTSPlayer : NetworkBehaviour
     private Color teamColor = new Color();
     [SyncVar(hook = nameof(ClientHandleResourceUpdated))]
     private int resources = 500;
-
+    [SyncVar(hook =nameof(AuthorityHandlePartyOwnerStateUpdated))]
+    private bool isPartyOwner = false;
     public event Action<int> ClientOnResourcesUpdated;
-
-
+    public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
+    public bool GetIsPartyOwner()
+    {
+        return isPartyOwner;
+    }
     public Transform GetCameraTransform()
     {
         return cameraTransform;
@@ -70,6 +74,19 @@ public class RTSPlayer : NetworkBehaviour
         base.OnStopServer();
         Unit.ServerOnUnitSpawned -= ServerHandleUnitSpawned;
         Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
+    }
+    [Server]
+    public void SetPartyOwner(bool state)
+    {
+        isPartyOwner = state;
+    }
+
+    [Command]
+    public void CmdStartGame()
+    {
+        if (!isPartyOwner) { return; }
+
+        ((RTSNetworkManager)NetworkManager.singleton).StartGame();
     }
 
     [Command]
@@ -143,13 +160,28 @@ public class RTSPlayer : NetworkBehaviour
         Building.AuthorityOnBuildingSpawned += AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned += AuthorityHandleBuildingDespawned;
     }
+    public override void OnStartClient()
+    {
+        if (NetworkServer.active) { return; }
+
+       ((RTSNetworkManager)NetworkManager.singleton).Players.Add(this);
+
+    }
     public override void OnStopClient()
     {
-        if (!isClientOnly || !hasAuthority) { return; }
+        if (!isClientOnly) { return; }
+         ((RTSNetworkManager)NetworkManager.singleton).Players.Remove(this);
+        if (!hasAuthority) { return; }
         Unit.AuthorityOnUnitSpawned -= AuthorityHandleUnitSpawned;
         Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;
+    }
+
+    private void AuthorityHandlePartyOwnerStateUpdated(bool oldState,bool newState)
+    {
+        if (!hasAuthority) { return; }
+        AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
     }
 
     private void AuthorityHandleUnitSpawned(Unit unit)
