@@ -10,19 +10,13 @@ public class ResourcesDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resoucesText = null;
     private RTSPlayer player;
 
-    private void Update()
+    private void Start()
     {
-        if (player == null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-            if(player != null)
-            {
-                ClientHandleResourcesUpdated(player.GetResources());
-                player.ClientOnResourcesUpdated += ClientHandleResourcesUpdated;
-            }
-        }
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+        ClientHandleResourcesUpdated(player.GetResources());
+        player.ClientOnResourcesUpdated += ClientHandleResourcesUpdated;
     }
-
+  
     private void OnDestroy()
     {
         player.ClientOnResourcesUpdated -= ClientHandleResourcesUpdated;
