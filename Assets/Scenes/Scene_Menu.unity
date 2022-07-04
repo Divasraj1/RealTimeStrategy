@@ -2684,6 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingPagePanel: {fileID: 1169893171}
+  useSteam: 1
 --- !u!1 &1237604964
 GameObject:
   m_ObjectHideFlags: 0
